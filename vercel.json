@@ -2,18 +2,14 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/submit.go",
+        "src": "api/main.go",
         "use": "@vercel/go"
       }
     ],
     "routes": [
       {
-        "src": "/submit",
+        "src": "/main",
         "dest": "/api/main"
-      },
-      {
-        "src": "/orders",
-        "dest": "/api/orders"
       },
       {
         "src": "/",
