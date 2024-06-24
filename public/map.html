@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Locator</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8Muws6vwwAASkSo_uIuu_y2kqfcN2DeY"></script>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: {lat: -34.397, lng: 150.644}
+            });
+
+            // Fetch orders from your backend and place them on the map
+            fetch('/api/orders')
+                .then(response => response.json())
+                .then(orders => {
+                    orders.forEach(order => {
+                        var marker = new google.maps.Marker({
+                            position: {lat: order.lat, lng: order.lng},
+                            map: map,
+                            title: order.address
+                        });
+                    });
+                });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div id="map"></div>
+</body>
+</html>

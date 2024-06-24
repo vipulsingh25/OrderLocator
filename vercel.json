@@ -1,0 +1,28 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "api/submit.go",
+        "use": "@vercel/go"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/submit",
+        "dest": "/api/main"
+      },
+      {
+        "src": "/orders",
+        "dest": "/api/orders"
+      },
+      {
+        "src": "/",
+        "dest": "/public/form.html"
+      },
+      {
+        "src": "/map",
+        "dest": "/public/map.html"
+      }
+    ]
+  }
+  
